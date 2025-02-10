@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>JP's Website</title>
+  <link rel="shortcut icon" href="jpicon.png" type="image/x-icon">  
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">JP's Website</a>
+      <button id="mobile-menu" class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#aboutme">About</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#crush">Crush</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" id="aboutme">
+    <div class="card">
+      <img src="ako.png" alt="Card Image">
+      <h2>John Paul R. Nieva</h2>
+      <p>Hello, I'm John Paul R. Nieva, second year college student pursuing the course of Bachelor of Science and Information Technology.</p>
+    </div>
+    <div class="card" id="hobbies">
+      <img src="idol.png" alt="Card Image">
+      <h2>Hobbies</h2>
+      <p>My hobby is to play basketball and I want to play in NBA someday.</p>
+    </div>
+    <div class="card" id="crushiieq">
+      <img src="crush.png" alt="Card Image">
+      <h2>Crush</h2>
+      <p>I always fascinating to her beauty and everytime I saw her, I'm speechless.</p>
+    </div>
+  </div>
+  <style>
+
+    /* For smoother scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* My Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #333;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-toggle .bar {
+        display: block;
+        width: 24px;
+        height: 3px;
+        background-color: white;
+        margin: 4px auto;
+      }
+    }
+
+    @media (max-width: 522px) {
+      .card {
+        width: 100%;
+      }
+    }
+  </style>
+  
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Toggle mobile menu visibility
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Smooth scroll and collapse menu after clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default jump
+
+        const targetId = link.getAttribute('href');
+        
+        if (targetId === '#home') {
+          // Scroll to the top for Home
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+        
+          // Scroll to the target section
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        
+        // Collapse menu after navigation
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
